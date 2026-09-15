@@ -12,6 +12,12 @@ android {
     }
 }
 
+configurations.configureEach {
+    // کتابخانه‌های Kotlin پیش از نسخهٔ 1.8، با Kotlin جدیدِ AndroidX هم‌زیستی ندارند.
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}
+
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.activity:activity:1.9.3'
