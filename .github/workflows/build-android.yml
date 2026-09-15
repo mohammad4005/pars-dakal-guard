@@ -26,7 +26,7 @@ jobs:
       - name: ساخت APK
         working-directory: android_guard_app
         continue-on-error: true
-        run: ANDROID_HOME=$HOME/android-sdk $HOME/gradle-8.10.2/bin/gradle assembleDebug --stacktrace 2>&1 | tee ../gradle-build.log
+        run: env -u ANDROID_SDK_ROOT ANDROID_HOME=$HOME/android-sdk $HOME/gradle-8.10.2/bin/gradle assembleDebug --stacktrace 2>&1 | tee ../gradle-build.log
       - name: نمایش نتیجهٔ ساخت
         if: always()
         run: cat gradle-build.log
