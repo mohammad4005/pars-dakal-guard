@@ -29,18 +29,11 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
 > Task :app:compressDebugAssets
-> Task :app:processDebugManifestForPackage
 > Task :app:processDebugJavaRes NO-SOURCE
-> Task :app:processDebugResources
+> Task :app:processDebugManifestForPackage
 > Task :app:mergeDebugJavaResource
-
-> Task :app:compileDebugJavaWithJavac
-Note: /home/runner/work/pars-dakal-guard/pars-dakal-guard/android_guard_app/app/src/main/java/ir/parsdakal/guard/MainActivity.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-
-> Task :app:desugarDebugFileDependencies
 > Task :app:checkDebugDuplicateClasses FAILED
-> Task :app:dexBuilderDebug
+> Task :app:processDebugResources
 
 FAILURE: Build failed with an exception.
 
@@ -285,5 +278,5 @@ Go to the documentation to learn how to <a href="d.android.com/r/tools/classpath
 	... 2 more
 
 
-BUILD FAILED in 39s
-22 actionable tasks: 22 executed
+BUILD FAILED in 34s
+19 actionable tasks: 19 executed
