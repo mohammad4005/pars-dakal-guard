@@ -20,6 +20,8 @@ import androidx.core.content.ContextCompat;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.util.Collections;
+
 public class MainActivity extends AppCompatActivity {
     private static final int FILE_REQUEST = 200;
     private static final int CAMERA_PERMISSION = 201;
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         IntentIntegrator scanner = new IntentIntegrator(this);
-        scanner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        scanner.setDesiredBarcodeFormats(Collections.singleton("QR_CODE"));
         scanner.setPrompt("کد QR ایستگاه گشت را اسکن کنید");
         scanner.setCameraId(0);
         scanner.setBeepEnabled(true);
