@@ -48,3 +48,12 @@ jobs:
             gradle-build.log
       - name: تأیید خروجی APK
         run: test -f android_guard_app/app/build/outputs/apk/debug/app-debug.apk
+      - name: تحویل APK در مخزن
+        run: |
+          mkdir -p releases
+          cp android_guard_app/app/build/outputs/apk/debug/app-debug.apk releases/ParsDakalGuard-debug.apk
+          git config user.name "Pars Dakal Build"
+          git config user.email "build@pars-dakal.local"
+          git add releases/ParsDakalGuard-debug.apk
+          git commit -m "Publish Android guard APK"
+          git push
