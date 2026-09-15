@@ -1,6 +1,7 @@
 package ir.parsdakal.guard;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -12,17 +13,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.util.Collections;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private static final int FILE_REQUEST = 200;
     private static final int CAMERA_PERMISSION = 201;
     private static final String BASE_URL = "http://192.168.1.211:8000/";
@@ -55,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openNativeScanner() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION);
+        if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION);
             return;
         }
         IntentIntegrator scanner = new IntentIntegrator(this);
@@ -68,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         scanner.initiateScan();
     }
 
-    @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] results) {
+    @Override public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
         super.onRequestPermissionsResult(requestCode, permissions, results);
         if (requestCode == CAMERA_PERMISSION && results.length > 0 && results[0] == PackageManager.PERMISSION_GRANTED) openNativeScanner();
         else if (requestCode == CAMERA_PERMISSION) Toast.makeText(this, "برای اسکن، اجازهٔ دوربین لازم است.", Toast.LENGTH_LONG).show();
