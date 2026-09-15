@@ -8,8 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with: { distribution: temurin, java-version: '17' }
+      - uses: android-actions/setup-android@v3
+      - name: آماده‌سازی Android SDK
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
       - name: دریافت Gradle
         run: wget -q https://services.gradle.org/distributions/gradle-8.10.2-bin.zip && unzip -q gradle-8.10.2-bin.zip -d $HOME
       - name: ساخت APK
