@@ -3,6 +3,8 @@ on:
   push:
     paths: ['android_guard_app/**', '.github/workflows/build-android.yml']
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,6 +30,15 @@ jobs:
       - name: نمایش نتیجهٔ ساخت
         if: always()
         run: cat gradle-build.log
+      - name: ذخیرهٔ گزارش خطا در مخزن
+        if: failure()
+        run: |
+          cp gradle-build.log android-build-diagnostic.log
+          git config user.name "Pars Dakal Build"
+          git config user.email "build@pars-dakal.local"
+          git add android-build-diagnostic.log
+          git commit -m "Save Android build diagnostic"
+          git push
       - uses: actions/upload-artifact@v4
         if: always()
         with:
