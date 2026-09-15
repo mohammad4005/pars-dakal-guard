@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         IntentIntegrator scanner = new IntentIntegrator(this);
-        scanner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        scanner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
         scanner.setPrompt("کد QR ایستگاه گشت را اسکن کنید");
         scanner.setCameraId(0);
         scanner.setBeepEnabled(true);
