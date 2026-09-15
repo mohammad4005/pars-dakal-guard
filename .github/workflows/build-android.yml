@@ -31,7 +31,7 @@ jobs:
         if: always()
         run: cat gradle-build.log
       - name: ذخیرهٔ گزارش خطا در مخزن
-        if: failure()
+        if: always()
         run: |
           cp gradle-build.log android-build-diagnostic.log
           git config user.name "Pars Dakal Build"
