@@ -2,11 +2,11 @@ plugins { id 'com.android.application' }
 
 android {
     namespace 'ir.parsdakal.guard'
-    compileSdk 35
+    compileSdk 34
     defaultConfig {
         applicationId 'ir.parsdakal.guard'
         minSdk 24
-        targetSdk 35
+        targetSdk 34
         versionCode 1
         versionName '1.0.0'
     }
